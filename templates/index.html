@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markbook</title>
+</head>
+<body>
+    <h1>Student marks</h1>
+    <p>Welcome to my student markbook, where I keep both students and marks... in a book</p>
+    {% if logged_in == True %}
+        <p>Hello, {{name}}. You visited my page at {{time}}</p>
+        <p><a href="/add">Add Student</a> | <a href="/marks">List Marks</a></p>
+    {% else %}
+        <p>Please Login</p>
+    {% endif %}
+    <table border="1" >
+        <thead>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>DOB</th>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td><a href="/student/{{student['id']}}">{{student['firstname']}}</a></td>
+                <td>{{student['lastname']}}</td>
+                <td>{{student['dob']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</body>
+</html>
